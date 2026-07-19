@@ -1,59 +1,67 @@
-# LoanDisbursementUI
+# Loan Disbursement UI
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.18.
+Angular frontend for the Loan Disbursement System. It provides login, loan management, and disbursement management screens integrated with the backend API.
 
-## Development server
+## Project Description
 
-To start a local development server, run:
+The UI supports:
 
-```bash
-ng serve
+- Login with username and password
+- JWT token handling for authenticated API requests
+- Loan CRUD operations
+- Disbursement creation and listing
+- Dashboard-based workflow for daily loan operations
+
+## Frontend Architecture Flow
+
+```mermaid
+flowchart LR
+		A[Login Component] -->|POST /api/auth/login| B[Backend API]
+		B --> C[JWT Token]
+		C --> D[Local Storage]
+
+		E[Loan List Component] --> F[HTTP Client]
+		G[Disbursement Component] --> F
+		F --> H[Auth Interceptor]
+		H -->|Bearer Token| B
+
+		I[Auth Guard] --> J[Route Access]
+		D --> I
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Key UI Modules
 
-## Code scaffolding
+- Login component
+	- Authenticates user and stores JWT token
+- Dashboard component
+	- Hosts loan and disbursement modules
+- Loan List component
+	- Displays loans and supports create, update, delete
+- Disbursement component
+	- Displays disbursements and supports new disbursement creation
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Run Frontend
 
-```bash
-ng generate component component-name
-```
+1. Install dependencies:
+	 - npm install
+2. Start development server:
+	 - npm run start -- --port 4301
+3. Open:
+	 - http://localhost:4301
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Important Path Note
 
-```bash
-ng generate --help
-```
+If your workspace path contains #, Vite SSR/dev module loading may fail.
 
-## Building
+Recommended options:
 
-To build the project run:
+- Use a path alias without # using subst on Windows, then run npm start from that alias.
+- Or move the project to a directory path that does not include #.
 
-```bash
-ng build
-```
+## Build
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+- npm run build
 
-## Running unit tests
+## Backend URL
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Expected API base URL: http://localhost:5148
