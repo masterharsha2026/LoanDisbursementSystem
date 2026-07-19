@@ -1,0 +1,50 @@
+<section class="panel">
+	<div class="panel-head">
+		<h2>Disbursements</h2>
+		<button type="button" (click)="loadDisbursements()">Refresh</button>
+	</div>
+
+	<form (ngSubmit)="createDisbursement()" class="disbursement-form">
+		<label>
+			Loan ID
+			<input type="number" [(ngModel)]="formData.loanId" name="loanId" required />
+		</label>
+		<label>
+			Amount
+			<input type="number" [(ngModel)]="formData.amount" name="amount" step="0.01" required />
+		</label>
+		<label class="full-width">
+			Remarks
+			<input type="text" [(ngModel)]="formData.remarks" name="remarks" required />
+		</label>
+
+		<button type="submit">Disburse Loan</button>
+	</form>
+
+	<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+	<p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+	<p *ngIf="loading" class="info">Loading disbursements...</p>
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Loan ID</th>
+					<th>Amount</th>
+					<th>Remarks</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of disbursements">
+					<td>{{ item.id }}</td>
+					<td>{{ item.loanId }}</td>
+					<td>{{ item.amount | number:'1.2-2' }}</td>
+					<td>{{ item.remarks }}</td>
+					<td>{{ item.disbursementDate | date:'medium' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

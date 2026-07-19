@@ -1,0 +1,110 @@
+.panel {
+	background: #fff;
+	border-radius: 18px;
+	padding: 1rem;
+	box-shadow: 0 10px 24px rgba(36, 45, 49, 0.1);
+}
+
+.panel-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.75rem;
+}
+
+h2 {
+	margin: 0;
+	color: #17343f;
+}
+
+button {
+	border: 0;
+	border-radius: 10px;
+	padding: 0.5rem 0.8rem;
+	background: #1b7f95;
+	color: #fff;
+	cursor: pointer;
+}
+
+.loan-form {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+}
+
+label {
+	display: grid;
+	gap: 0.35rem;
+	font-size: 0.85rem;
+	color: #4f6a73;
+}
+
+input,
+select {
+	border: 1px solid #c8d7dd;
+	border-radius: 10px;
+	padding: 0.6rem;
+}
+
+.actions {
+	grid-column: 1 / -1;
+	display: flex;
+	gap: 0.5rem;
+}
+
+.secondary {
+	background: #607480;
+}
+
+.table-wrap {
+	overflow: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 0.6rem;
+	border-bottom: 1px solid #edf1f2;
+}
+
+th {
+	color: #2e4e58;
+}
+
+.row-actions {
+	display: flex;
+	gap: 0.4rem;
+}
+
+.small {
+	padding: 0.35rem 0.55rem;
+	font-size: 0.8rem;
+}
+
+.danger {
+	background: #bf2146;
+}
+
+.error {
+	color: #b42318;
+}
+
+.success {
+	color: #027a48;
+}
+
+.info {
+	color: #344054;
+}
+
+@media (max-width: 850px) {
+	.loan-form {
+		grid-template-columns: 1fr;
+	}
+}

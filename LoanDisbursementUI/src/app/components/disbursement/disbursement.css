@@ -1,0 +1,89 @@
+.panel {
+	background: #fff;
+	border-radius: 18px;
+	padding: 1rem;
+	box-shadow: 0 10px 24px rgba(36, 45, 49, 0.1);
+}
+
+.panel-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 0.75rem;
+}
+
+h2 {
+	margin: 0;
+	color: #17343f;
+}
+
+button {
+	border: 0;
+	border-radius: 10px;
+	padding: 0.55rem 0.8rem;
+	background: #7f3d1d;
+	color: #fff;
+	cursor: pointer;
+}
+
+.disbursement-form {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0.75rem;
+	margin-bottom: 1rem;
+}
+
+label {
+	display: grid;
+	gap: 0.35rem;
+	font-size: 0.85rem;
+	color: #4f6a73;
+}
+
+input {
+	border: 1px solid #c8d7dd;
+	border-radius: 10px;
+	padding: 0.6rem;
+}
+
+.full-width {
+	grid-column: 1 / -1;
+}
+
+.table-wrap {
+	overflow: auto;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	text-align: left;
+	padding: 0.6rem;
+	border-bottom: 1px solid #edf1f2;
+}
+
+th {
+	color: #2e4e58;
+}
+
+.error {
+	color: #b42318;
+}
+
+.success {
+	color: #027a48;
+}
+
+.info {
+	color: #344054;
+}
+
+@media (max-width: 850px) {
+	.disbursement-form {
+		grid-template-columns: 1fr;
+	}
+}

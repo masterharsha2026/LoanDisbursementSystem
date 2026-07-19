@@ -1,0 +1,60 @@
+<section class="panel">
+	<div class="panel-head">
+		<h2>Loans</h2>
+		<button type="button" (click)="loadLoans()">Refresh</button>
+	</div>
+
+	<form (ngSubmit)="submitLoan()" class="loan-form">
+		<label>
+			Customer ID
+			<input type="number" [(ngModel)]="formData.customerId" name="customerId" required />
+		</label>
+		<label>
+			Loan Amount
+			<input type="number" [(ngModel)]="formData.loanAmount" name="loanAmount" step="0.01" required />
+		</label>
+		<label>
+			Status
+			<select [(ngModel)]="formData.status" name="status">
+				<option value="Approved">Approved</option>
+				<option value="Pending">Pending</option>
+				<option value="Disbursed">Disbursed</option>
+			</select>
+		</label>
+
+		<div class="actions">
+			<button type="submit">{{ editMode ? 'Update Loan' : 'Create Loan' }}</button>
+			<button type="button" class="secondary" (click)="resetForm()">Reset</button>
+		</div>
+	</form>
+
+	<p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+	<p class="success" *ngIf="successMessage">{{ successMessage }}</p>
+	<p *ngIf="loading" class="info">Loading loans...</p>
+
+	<div class="table-wrap">
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Customer</th>
+					<th>Amount</th>
+					<th>Status</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let loan of loans">
+					<td>{{ loan.id }}</td>
+					<td>{{ loan.customerId }}</td>
+					<td>{{ loan.loanAmount | number:'1.2-2' }}</td>
+					<td>{{ loan.status }}</td>
+					<td class="row-actions">
+						<button type="button" class="small" (click)="editLoan(loan)">Edit</button>
+						<button type="button" class="small danger" (click)="deleteLoan(loan.id)">Delete</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</section>

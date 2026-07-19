@@ -1,0 +1,14 @@
+<section class="dashboard-shell">
+	<header class="top-bar">
+		<div>
+			<h1>Loan Operations Dashboard</h1>
+			<p>Welcome, {{ userName }}</p>
+		</div>
+		<button type="button" (click)="logout()">Logout</button>
+	</header>
+
+	<main class="content-grid">
+		<app-loan-list></app-loan-list>
+		<app-disbursement></app-disbursement>
+	</main>
+</section>
